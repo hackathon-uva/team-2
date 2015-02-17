@@ -16,57 +16,68 @@ module.exports = function(server) {
   io.on('connection', function (socket) {
     searches[socket.id] = {};
     socket.on('query', function (query) {
-      var search = twitter.stream('statuses/filter', {track: query});
+      //var search = twitter.stream('statuses/filter', {track: query});
+      //
+      //console.log('Search added:', query);
+      //
+      //search.on('tweet', function(tweet) {
+      //  console.log('Tweet received', tweet);
+      //
+      //  if (tweet.text.substr(0,2) === 'RT') return;
+      //
+      //  socket.emit('goal', tweet);
+      //});
+      //
+      //search.on('limit', function(limitMessage) {
+      //  console.log('Limit for socket ' + socket.id + ' on query ' + query + ' reached!');
+      //});
+      //
+      //search.on('warning', function(warning) {
+      //  console.log('warning', warning);
+      //});
+      //
+      //// https://dev.twitter.com/streaming/overview/connecting
+      //search.on('reconnect', function(request, response, connectInterval) {
+      //  console.log('reconnect :: connectInterval', connectInterval);
+      //
+      //  socket.emit('api_error', {type: 'limit', interval: connectInterval});
+      //});
+      //
+      //search.on('disconnect', function(disconnectMessage) {
+      //  console.log('disconnect', disconnectMessage);
+      //});
 
-      console.log('Search added:', query);
+      twitter.get('search/tweets', {q: query}, function (err, data, response) {
+        if (!data) return console.log('No data received', response);
 
-      search.on('tweet', function(tweet) {
-        console.log('Tweet received', tweet);
+        var tweets = data.statuses || [];
 
-        if (tweet.text.substr(0,2) === 'RT') return;
+        searches[socket.id][query] = setInterval(emitGoal, 15000);
 
-        socket.emit('goal', tweet);
+        function emitGoal () {
+          socket.emit('goal', tweets.shift());
+        }
       });
-
-      search.on('limit', function(limitMessage) {
-        console.log('Limit for socket ' + socket.id + ' on query ' + query + ' reached!');
-      });
-
-      search.on('warning', function(warning) {
-        console.log('warning', warning);
-      });
-
-      // https://dev.twitter.com/streaming/overview/connecting
-      search.on('reconnect', function(request, response, connectInterval) {
-        console.log('reconnect :: connectInterval', connectInterval);
-      });
-
-      search.on('disconnect', function(disconnectMessage) {
-        console.log('disconnect', disconnectMessage);
-      });
-
-      searches[socket.id][query] = search;
     });
 
     socket.on('remove', function(query) {
-      searches[socket.id][query].stop();
-      delete searches[socket.id][query];
-
+      clearQuery(query);
       console.log('Search removed:', query);
     });
 
     socket.on('disconnect', function() {
-      var k;
-
-      for (k in searches[socket.id]) {
-        searches[socket.id][k].stop();
-        delete searches[socket.id][k];
-      }
+      Object.keys(searches[socket.id]).forEach(clearQuery);
 
       delete searches[socket.id];
 
       console.log('Disconnect from user:', socket.id);
     });
+
+    function clearQuery(query) {
+      //searches[socket.id][query].stop();
+      clearInterval(searches[socket.id][query]);
+      delete searches[socket.id][query];
+    }
 
     socket.on('error', function (error) {
       console.log('Socket error:', error);
