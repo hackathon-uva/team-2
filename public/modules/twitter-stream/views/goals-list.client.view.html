@@ -1,20 +1,22 @@
-<div ng-if="0 === goals.length">
-	<md-progress-circular md-mode="indeterminate" md-diameter="24"></md-progress-circular>
-	Awaiting first goal ...
-</div>
+<md-card flex="5">
+	<md-card-content>
+	<div ng-if="0 === goals.length">
+		<md-progress-circular md-mode="indeterminate" md-diameter="24"></md-progress-circular>
+		Awaiting first goal ...
+	</div>
 
-<md-button ng-if="goals.length" href>End session</md-button>
+	<md-button ng-if="goals.length" href>End session</md-button>
+	</md-card-content>
+</md-card>
 
-<md-list>
+<md-list flex>
 	<md-item ng-repeat="goal in goals | limitTo:100 track by goal.id">
-		<md-item-content>
-			<div class="md-tile-left">
-				<img src ng-src="{{ goal.user.profile_image_url }}" class="face" alt="{{ goal.user.name }}">
-			</div>
-			<div class="md-tile-content">
-				<h4>{{ goal.user.name }}</h4>
-				<p>{{ goal.text }}</p>
-			</div>
-		</md-item-content>
+		<md-card>
+			<md-card-content>
+				<blockquote cite="{{ goal.url }}">
+					<p>{{ goal.text }}</p>
+				</blockquote>
+			</md-card-content>
+		</md-card>
 	</md-item>
 </md-list>

@@ -52,7 +52,7 @@ module.exports = function(server) {
 
         var tweets = data.statuses || [];
 
-        searches[socket.id][query] = setInterval(emitGoal, 15000);
+        searches[socket.id][query] = setInterval(emitGoal, 5000);
 
         function emitGoal () {
           socket.emit('goal', tweets.shift());

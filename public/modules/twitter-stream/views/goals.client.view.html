@@ -1,6 +1,47 @@
-<div layout="row">
-    <div flex>
-        Lorem ipsum ...
+<div layout="row" flex>
+    <div flex="20" layout="column">
+        <md-card>
+            <md-card-content>
+                <h1>Set smart goals</h1>
+            </md-card-content>
+        </md-card>
+
+        <md-card>
+            <md-card-content>
+            <ol>
+                <li>Specific</li>
+                <li>Measurable</li>
+                <li>Attainable</li>
+                <li>Relevant</li>
+                <li>Time-bound</li>
+            </ol>
+            </md-card-content>
+        </md-card>
+
+        <md-card>
+            <md-card-content>
+            <blockquote>
+                I want to pass the Cross Cultural Management quiz at the start of the first lecture.
+            </blockquote>
+            </md-card-content>
+        </md-card>
     </div>
-    <div flex ui-view></div>
+    <div flex="40" layout="column">
+        <md-card>
+            <md-card-content>
+            <iframe width="100%" height="450" src="https://www.youtube.com/embed/aVstw9HYl-o" frameborder="0" allowfullscreen></iframe>
+
+            <p>Action verbs to keep in mind:<br>reach, achieve, implement, define, build, create, etc.</p>
+            <p>Now it's your turn:</p>
+
+            <md-input-container>
+                <label>My goal</label>
+                <input type="text" name="goal" ng-model="goal" placeholder="I want to { verb } { objective } { when }">
+            </md-input-container>
+            </md-card-content>
+        </md-card>
+    </div>
+    <div flex="40">
+        <div layout="column" ui-view></div>
+    </div>
 </div>
