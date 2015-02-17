@@ -39,8 +39,6 @@ module.exports = function(server) {
       //// https://dev.twitter.com/streaming/overview/connecting
       //search.on('reconnect', function(request, response, connectInterval) {
       //  console.log('reconnect :: connectInterval', connectInterval);
-      //
-      //  socket.emit('api_error', {type: 'limit', interval: connectInterval});
       //});
       //
       //search.on('disconnect', function(disconnectMessage) {
