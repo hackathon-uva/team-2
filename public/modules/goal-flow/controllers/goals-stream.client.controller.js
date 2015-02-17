@@ -1,10 +1,10 @@
 'use strict';
 
-angular.module('goal-flow').controller('GoalsStreamController', [
+angular.module('twitter-stream').controller('GoalsStreamController', [
 	'$scope',
 	'goalsSocket',
 	function($scope, goalsSocket) {
-		$scope.goals = ['ik wil komende jaar nooit doelen formuleren','ik wil meanJS beter begrijpen','ik wil nu antwoord op vraag des levens'];
+		$scope.goals = [];
 		$scope.keyword = undefined;
 
 		$scope.updateStream = function () {
