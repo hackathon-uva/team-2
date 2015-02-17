@@ -1,19 +1,20 @@
 <section id="goals-list">
 
 	<div layout="row">
-		<div flex>
+		<md-card flex>
 			<h3>Available SMART goals from class</h3>
 			<div ng-repeat="goal in goals">
 				{{goal.name}} <button ng-click="commit($index)">Commit</button>
 			</div>
-		</div>
-		<div flex>
+		</md-card>
+
+		<md-card flex>
 			<h3>My Goals</h3>
 			<div ng-repeat="mygoal in mygoals">
 				{{mygoal.name}} <button ng-click="remove($index)">Remove</button>
 			</div>
-		</div>
+		</md-card>
 	</div>
-	<div><button ui-sref="rate">Commit to these goals!</button></div>
+	<div><md-button ui-sref="rate">Commit to these goals!</md-button></div>
 
 </section>
