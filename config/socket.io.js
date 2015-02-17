@@ -21,6 +21,10 @@ module.exports = function(server) {
       console.log('Search added:', query);
 
       search.on('tweet', function(tweet) {
+        console.log('Tweet received', tweet);
+
+        if (tweet.text.substr(0,2) === 'RT') return;
+
         socket.emit('goal', tweet);
       });
 
