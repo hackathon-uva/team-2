@@ -26,11 +26,14 @@ var app = require('./config/express')(db);
 // Bootstrap passport config
 require('./config/passport')();
 
+// Socket IO
+require('./config/socket.io')(app);
+
 // Start the app by listening on <port>
 app.listen(config.port);
 
 // Expose app
-exports = module.exports = app;
+module.exports = app;
 
 // Logging initialization
 console.log('MEAN.JS application started on port ' + config.port);

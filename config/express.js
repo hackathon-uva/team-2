@@ -159,5 +159,5 @@ module.exports = function(db) {
 	}
 
 	// Return Express server instance
-	return app;
+	return http.Server(app);
 };

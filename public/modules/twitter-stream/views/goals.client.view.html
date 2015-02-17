@@ -1,0 +1,17 @@
+<section id="goals-list">
+	<form ng-submit="updateStream()">
+		<md-input-container>
+			<label>Goal tag</label>
+			<input ng-model="keyword" name="keyword" type="text" required placeholder="#MyGoal">
+		</md-input-container>
+
+		<md-input-container>
+			<label>Limit</label>
+			<md-slider ng-model="limit" min="25" max="50"></md-slider>
+		</md-input-container>
+	</form>
+
+	<md-card ng-repeat="goal in goals | limitTo:10 track by goal.id">
+		{{ goal.text }}
+	</md-card>
+</section>

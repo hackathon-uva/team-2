@@ -43,21 +43,23 @@
 	<![endif]-->
 </head>
 
-<body class="ng-cloak">
-	<header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
-	<section class="content">
-		<section class="container">
-			{% block content %}{% endblock %}
-		</section>
-	</section>
+<body class="ng-cloak" layout="column">
+<md-toolbar layout="row">
+	<div class="md-toolbar-tools">
+		<span>GoalPost</span>
+		<md-button ui-sref="goals">Goals</md-button>
+	</div>
+</md-toolbar>
 
-	<!--Embedding The User Object-->
-	<script type="text/javascript">
-		var user = {{ user | json | safe }};
-	</script>
+<div layout="column" flex id="content">
+	<md-content layout="column" flex class="md-padding">
+		{% block content %}{% endblock %}
+	</md-content>
+</div>
 
 	<!--Application JavaScript Files-->
-	{% for jsFile in jsFiles %}<script type="text/javascript" src="{{jsFile}}"></script>{% endfor %} 
+	{% for jsFile in jsFiles %}<script type="text/javascript" src="{{jsFile}}"></script>{% endfor %}
+	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
 
 	{% if process.env.NODE_ENV === 'development' %}
 	<!--Livereload script rendered -->
