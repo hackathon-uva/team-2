@@ -1,9 +1,19 @@
 <section id="goals-list">
-	<form ng-submit="updateStream()">
-		<md-input-container>
-			<label>HOI ELGER</label>
-			<input ng-model="keyword" name="keyword" type="text" required placeholder="#MyGoal">
-		</md-input-container>
-	</form>
+
+	<div layout="row">
+		<div flex>
+			<h3>Available SMART goals from class</h3>
+			<div ng-repeat="goal in goals">
+				{{goal.name}} <button ng-click="commit($index)">Commit</button>
+			</div>
+		</div>
+		<div flex>
+			<h3>My Goals</h3>
+			<div ng-repeat="mygoal in mygoals">
+				{{mygoal.name}} <button ng-click="remove($index)">Remove</button>
+			</div>
+		</div>
+	</div>
+	<div><button ng-click="proceed()">Commit to these goals!</button></div>
 
 </section>

@@ -9,7 +9,7 @@ angular.module('goal-flow').config([
 		state('commit', {
 			url: '/commit',
 			templateUrl: 'modules/goal-flow/views/goals.client.view.html',
-			controller: 'GoalsStreamController'
+			controller: 'GoalsCommitController'
 		});
 	}
 ]);
