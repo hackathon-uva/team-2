@@ -28,7 +28,7 @@
     </div>
     <div flex="40" layout="column">
         <md-card>
-            <iframe width="100%" height="450" src="https://www.youtube.com/embed/aVstw9HYl-o" frameborder="0" allowfullscreen></iframe>
+            <iframe width="100%" height="400" src="https://www.youtube.com/embed/aVstw9HYl-o" frameborder="0" allowfullscreen></iframe>
 
             <md-card-content>
                 <p>
@@ -44,11 +44,13 @@
                         <label>My goal</label>
                         <input type="text" name="goal" ng-model="goal" placeholder="I want to { verb } { objective } { when }">
                     </md-input-container>
+
+                    <md-button>Add goal</md-button>
                 </div>
             </md-card-content>
         </md-card>
     </div>
     <div flex="40">
-        <div layout="column" ui-view></div>
+        <div ui-view></div>
     </div>
 </div>

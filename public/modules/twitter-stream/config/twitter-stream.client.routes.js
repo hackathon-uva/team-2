@@ -29,10 +29,13 @@ angular.module('twitter-stream').config([
 				templateUrl: 'modules/twitter-stream/views/goals-list.client.view.html',
 				controller: ['$scope', '$stateParams', 'goalsSocket', function ($scope, $stateParams, goalsSocket) {
 					$scope.goals = [];
+					$scope.keyword = $stateParams.keyword;
 
 					goalsSocket.emit('query', $stateParams.keyword);
 
 					goalsSocket.on('goal', function (goal) {
+						if (!goal) return;
+
 						$scope.goals.unshift(goal);
 					});
 				}]
