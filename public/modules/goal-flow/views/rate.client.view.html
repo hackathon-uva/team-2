@@ -1,9 +1,14 @@
 <section>
 	Now rate your goals!
-	<div ng-repeat="goal in mygoals">
-		 {{goal.name}}, ideal:<md-slider md-discrete ng-model="myDiscreteValue" step="1" min="1" max="10"></md-slider>
-		{{goal.name}},current: <md-slider md-discrete ng-model="myDiscreteValue" step="1" min="1" max="10"></md-slider>
-	</div>
-	<div><button ui-sref="spider">Visualise these goals</button></div>
+	<md-card>
+		<div ng-repeat="goal in mygoals">
+			<h3>{{goal.name}}</h3>
+			 my ideal state is {{goal[$index].ideal}} on a scale from 1 to 10: <md-slider md-discrete ng-model="goal[$index].ideal" step="1" min="1" max="10"></md-slider>
+			my current state is {{goal[$index].ideal}} on a scale from 1 to 10:: <md-slider md-discrete ng-model="goal[$index].current" step="1" min="1" max="{{goal[$index].ideal || 10}}"></md-slider>
+		</div>
+	</md-card>
+ <!---->
+
+	<div><button ui-sref="visualise">Visualise these goals</button></div>
 
 </section>

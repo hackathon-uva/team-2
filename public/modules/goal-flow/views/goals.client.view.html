@@ -4,17 +4,18 @@
 		<md-card flex>
 			<h3>Available SMART goals from class</h3>
 			<div ng-repeat="goal in goals">
-				{{goal.name}} <button ng-click="commit($index)">Commit</button>
+				{{goal.name}} <md-button ng-click="commit($index)" class="md-primary md-raised">Commit</md-button>
 			</div>
 		</md-card>
 
 		<md-card flex>
 			<h3>My Goals</h3>
 			<div ng-repeat="mygoal in mygoals">
-				{{mygoal.name}} <button ng-click="remove($index)">Remove</button>
+				{{mygoal.name}} <md-button ng-click="remove($index)" class="md-raised">Remove</md-button>
 			</div>
 		</md-card>
 	</div>
-	<div><md-button ui-sref="rate">Commit to these goals!</md-button></div>
+	<center><div><md-button class="md-primary md-raised" ng-click="proceed()">Commit to these goals!</md-button></div></center>
+	<div>{{error}}</div>
 
 </section>
