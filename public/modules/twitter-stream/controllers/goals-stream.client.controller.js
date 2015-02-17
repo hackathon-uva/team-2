@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('twitter-stream').controller('GoalsStreamController', [
+angular.module('goal-flow').controller('GoalsStreamController', [
 	'$scope',
 	'goalsSocket',
 	function($scope, goalsSocket) {
