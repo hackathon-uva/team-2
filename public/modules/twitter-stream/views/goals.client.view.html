@@ -28,16 +28,23 @@
     </div>
     <div flex="40" layout="column">
         <md-card>
-            <md-card-content>
             <iframe width="100%" height="450" src="https://www.youtube.com/embed/aVstw9HYl-o" frameborder="0" allowfullscreen></iframe>
 
-            <p>Action verbs to keep in mind:<br>reach, achieve, implement, define, build, create, etc.</p>
-            <p>Now it's your turn:</p>
+            <md-card-content>
+                <p>
+                    Action verbs to keep in mind:
+                    <br>
+                    reach, achieve, implement, define, build, create, etc.
+                </p>
 
-            <md-input-container>
-                <label>My goal</label>
-                <input type="text" name="goal" ng-model="goal" placeholder="I want to { verb } { objective } { when }">
-            </md-input-container>
+                <div ng-if="'stream.list' | isState">
+                    <p>Now it's your turn:</p>
+
+                    <md-input-container>
+                        <label>My goal</label>
+                        <input type="text" name="goal" ng-model="goal" placeholder="I want to { verb } { objective } { when }">
+                    </md-input-container>
+                </div>
             </md-card-content>
         </md-card>
     </div>
