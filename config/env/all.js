@@ -24,7 +24,8 @@ module.exports = {
 				'public/lib/angular-ui-router/release/angular-ui-router.js',
 				'public/lib/angular-aria/angular-aria.js',
 				'public/lib/angular-material/angular-material.js',
-				'public/lib/angular-socket-io/socket.js'
+				'public/lib/angular-socket-io/socket.js',
+				'public/lib/d3/d3.js'
 			]
 		},
 		css: [
